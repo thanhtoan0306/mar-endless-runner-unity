@@ -6,11 +6,12 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody rb; // Reference to the Rigidbody2D component
 
     float horizontalInput;
+    public float horizontalMultiplier = 2; // Multiplier for horizontal movement
 
     private void FixedUpdate () 
     {
         Vector3 forwardMove = transform.forward * speed * Time.deltaTime; // Calculate forward movement
-        Vector3 horizontalMove = transform.right * horizontalInput * speed * Time.deltaTime; // Calculate horizontal movement
+        Vector3 horizontalMove = transform.right * horizontalInput * speed * Time.deltaTime * horizontalMultiplier; // Calculate horizontal movement
         rb.MovePosition(rb.position + forwardMove + horizontalMove); // Move the player forward
 
     }
